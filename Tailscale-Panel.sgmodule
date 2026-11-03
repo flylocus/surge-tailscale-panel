@@ -1,0 +1,11 @@
+#!name=Tailscale 节点状态面板
+#!desc=通过 Tailscale 官方 API 在 Surge 面板实时显示在线/离线设备列表，支持隐藏/自动清理同名离线幽灵节点与自定义展示数量（1-5）。
+#!category=Network
+#!arguments=TAILNET:-,API_KEY:tskey-api-xxx,MAX_VISIBLE:5,HIDE_DUP:true,CLEAN_DUP:false,SCRIPT_PATH:tailscale-panel.js
+#!arguments-desc=TAILNET: 填写你的 Tailnet 组织名称（保持默认的 "-" 即可自动匹配当前账户）\nAPI_KEY: 必填，请将默认的 tskey-api-xxx 替换为你真实的 Tailscale API access token\nMAX_VISIBLE: 面板最多显示的节点数量（范围 1-5，默认 5，超出部分自动折叠）\nHIDE_DUP: 是否在面板中自动隐藏同名的重复离线节点（true / false，默认 true）\nCLEAN_DUP: 是否调用 Tailscale API 自动从云端删除同名的重复离线节点（true / false，默认 false）\nSCRIPT_PATH: 脚本路径（本地安装保持默认 tailscale-panel.js；远程订阅请填脚本的 https:// Raw URL）
+
+[Panel]
+Tailscale状态 = script-name=Tailscale状态, update-interval=300
+
+[Script]
+Tailscale状态 = type=generic, timeout=15, argument=tailnet={{{TAILNET}}}&apikey={{{API_KEY}}}&max_visible={{{MAX_VISIBLE}}}&hide_dup={{{HIDE_DUP}}}&clean_dup={{{CLEAN_DUP}}}, script-path={{{SCRIPT_PATH}}}
