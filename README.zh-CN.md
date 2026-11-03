@@ -9,6 +9,10 @@
   <a href="./README.zh-CN.md"><img src="https://img.shields.io/badge/%E8%AF%AD%E8%A8%80-%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87-34C759?style=for-the-badge" alt="简体中文"></a>
 </p>
 
+<p>
+  <img src="./assets/preview.png" alt="Surge Tailscale 节点状态面板预览" width="264">
+</p>
+
 </div>
 
 ---
