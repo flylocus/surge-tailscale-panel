@@ -1,0 +1,11 @@
+#!name=Tailscale Mesh Status Panel
+#!desc=Real-time Tailscale mesh topology monitor for Surge iOS & macOS. Features 4-tuple ghost-node deduplication (-1, -2, ...), guarded cloud garbage collection, and configurable visible rows (1-5).
+#!category=DevOps & Mesh Network
+#!arguments=TAILNET:-,API_KEY:tskey-api-xxx,MAX_VISIBLE:5,HIDE_DUP:true,CLEAN_DUP:false,DRY_RUN:false,MIN_OFFLINE_HOURS:24,SCRIPT_PATH:tailscale-panel.js
+#!arguments-desc=TAILNET: Tailnet organization name (keep default "-" to auto-match the authenticated token's tailnet)\nAPI_KEY: Required. Replace tskey-api-xxx with your Tailscale API access token or OAuth access token\nMAX_VISIBLE: Maximum visible node rows in the panel (1-5, default 5; overflow rows fold into a summary footer)\nHIDE_DUP: Hide stale duplicate offline ghost nodes (-1, -2, ...) in the panel (true / false, default true)\nCLEAN_DUP: Automatically DELETE verified stale duplicate offline ghost nodes via Tailscale API v2 (true / false, default false)\nDRY_RUN: Preview eligible ghost nodes in the panel footer without executing cloud DELETE requests (true / false, default false)\nMIN_OFFLINE_HOURS: Minimum offline age in hours (1-720, default 24) required before CLEAN_DUP deletes a duplicate ghost node\nSCRIPT_PATH: Script path (keep tailscale-panel.js for local Surge directory, or set to a pinned https:// Raw URL)
+
+[Panel]
+Tailscale-Mesh = script-name=Tailscale-Mesh, update-interval=300
+
+[Script]
+Tailscale-Mesh = type=generic, timeout=20, argument=tailnet={{{TAILNET}}}&apikey={{{API_KEY}}}&max_visible={{{MAX_VISIBLE}}}&hide_dup={{{HIDE_DUP}}}&clean_dup={{{CLEAN_DUP}}}&dry_run={{{DRY_RUN}}}&min_offline_hours={{{MIN_OFFLINE_HOURS}}}, script-path={{{SCRIPT_PATH}}}

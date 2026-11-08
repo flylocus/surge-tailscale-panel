@@ -1,0 +1,17 @@
+# Local distribution & build artifacts
+/dist-gumroad/
+*.zip
+*.tar.gz
+
+# Environment & backup files
+.env
+.env.*
+*.bak
+*.swp
+*.log
+
+# OS & editor metadata
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
